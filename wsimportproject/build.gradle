@@ -1,0 +1,21 @@
+apply plugin: 'java'
+configurations {
+    jaxws
+    wsimport
+}
+dependencies {
+    jaxws group: 'com.sun.xml.ws', name: 'jaxws-rt', version: '2+'
+    jaxws group: 'com.sun.xml.ws', name: 'jaxws-tools', version: '2+'
+}
+
+def String generatedSourcesFolder = "${buildDir}/generated-sources/java"
+//sourceSets.main.java.srcDir(generatedSourcesFolder)
+
+task wsimport(type: ge.lanmaster.gradle.tasks.WSImportTask) {
+    outDir = file(generatedSourcesFolder)
+    wsdlUrls = [
+            "http://developer.ebay.com/webservices/finding/latest/FindingService.wsdl"
+    ]
+}
+
+compileJava.dependsOn(wsimport)

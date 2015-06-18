@@ -1,0 +1,6 @@
+subprojects {
+    repositories {
+        mavenCentral()
+    }    
+    task allDeps(type: DependencyReportTask) {}
+}
