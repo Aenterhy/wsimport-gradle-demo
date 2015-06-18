@@ -8,6 +8,8 @@ class WSImportTask extends DefaultTask {
     
     def List<String> wsdlUrls
     
+    def String bindingFilePath
+    
     @OutputDirectory
     File outDir
             
@@ -27,7 +29,8 @@ class WSImportTask extends DefaultTask {
                 wsimport(keep:true,
                     destdir: destDir,
                     sourcedestdir: outDir,
-                    wsdl: temp)
+                    wsdl: temp,
+                    binding: bindingFilePath)
             }
         }
     }

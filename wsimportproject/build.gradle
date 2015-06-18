@@ -16,6 +16,7 @@ task wsimport(type: ge.lanmaster.gradle.tasks.WSImportTask) {
     wsdlUrls = [
             "http://developer.ebay.com/webservices/finding/latest/FindingService.wsdl"
     ]
+    bindingFilePath = "${projectDir}/jaxws-bindings.xml"
 }
 
 compileJava.dependsOn(wsimport)
